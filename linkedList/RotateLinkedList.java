@@ -2,6 +2,8 @@ package linkedList;
 
 //https://leetcode.com/problems/rotate-list/description/
 
+import java.awt.*;
+
 class ListNode {
     int val;
     ListNode next;
@@ -113,19 +115,62 @@ class L {
 
     }
 
+    //    https://leetcode.com/problems/partition-list/
+    public void partition(ListNode head, int x) {
+
+        /*
+            Oh, wow it got submitted even without base case.
+            what a fantastic way raghav sir teach.
+            Simply made two new linked list in which first we created for less than x values and another is
+            for the greater or equal value and after traversing complete linked list I have connected a with b
+            like tempA.next dummyB.next and tempB.next = null(most important) and finally returned the first
+            linked list which is dummyA.next
+         */
+
+        ListNode dummyA = new ListNode(-1);
+        ListNode dummyB = new ListNode(-1);
+
+        ListNode tempA = dummyA;
+        ListNode tempB = dummyB;
+
+        ListNode temp = head;
+        while (temp != null) {
+
+            if (temp.val < x) {
+                tempA.next = temp;
+                tempA = tempA.next;
+            } else {
+                tempB.next = temp;
+                tempB = tempB.next;
+            }
+            temp = temp.next;
+
+        }
+        tempA.next = dummyB.next;
+        tempB.next = null;
+
+    }
+
 }
 
 public class RotateLinkedList {
     public static void main(String[] args) {
         L l = new L();
         l.insert(1);
-        l.insert(2);
-        l.insert(3);
         l.insert(4);
+        l.insert(3);
+        l.insert(2);
         l.insert(5);
+        l.insert(2);
 
-        l.rotateRight(2);
+//        l.rotateRight(2);
+//        l.printList(l.head);
         l.printList(l.head);
+        l.partition(l.head, 3);
+
+        l.printList(l.head);
+
+
     }
 
 }
