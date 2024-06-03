@@ -6,7 +6,7 @@ package recursion;
 public class Power {
     public static void main(String[] args) {
 
-        System.out.println(power_logarithmic(3, 4));
+        System.out.println(power_logarithmic(2, 12));
 
     }
 
@@ -27,19 +27,29 @@ public class Power {
 
     }
 
-    public static long power_logarithmic(int a, int b) {
+    public static int power_logarithmic(int x, int n) {
 //        Base case
-        if (b == 0) {
+
+        if (n == 0) {
             return 1;
         }
 
-        long ans = power_logarithmic(a, b / 2);
+        if (n < 0) {
 
-        if (b % 2 == 0) {
+            x = 1 / x; // to make x in denominator
+
+            n = -1 * n; //to make n positive
+
+        }
+        int ans = power_logarithmic(x, n / 2);
+
+        if (n % 2 == 0) {
+
             return ans * ans;
+
         }
 
-        return ans * ans * a;
+        return ans * ans * x;
 //        TC : O(log(b))
     }
 }
