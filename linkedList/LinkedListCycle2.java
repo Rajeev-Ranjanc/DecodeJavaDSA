@@ -47,4 +47,40 @@ public class LinkedListCycle2 {
         return null;
     }
 
+
+    /*
+//    https://www.geeksforgeeks.org/problems/find-the-first-node-of-loop-in-linked-list--170645/1
+
+        public static int findFirstNode(Node head){
+        //code here
+        Node slow = head;
+        Node fast = head;
+
+        while(fast != null && fast.next != null){
+
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if(slow == fast){
+                break;
+            }
+
+        }
+
+        if(fast == null || fast.next == null){
+            return -1;
+        }
+
+        slow = head;
+
+        while(slow != fast){
+
+            slow = slow.next;
+            fast = fast.next;
+
+        }
+        return slow.data;
+
+    }
+     */
 }
